@@ -2,10 +2,10 @@ import React from 'react';
 import Header from '../Header/Header';
 import './ContentArea.css';
 
-const ContentArea = () => {
+const ContentArea = ({minimizeClickHandler}) => {
   return (
     <div className='content-area'>
-      <Header />
+      <Header minimizeClickHandler={minimizeClickHandler}/>
       <div className='content1'>
         <div className='debug-manually'>
           <div className='debug-manually-text'>

@@ -14,6 +14,16 @@ class App extends Component{
   iconClickHandler = () => {
     this.setState({
       isMinimized: false
+    }, ()=> {
+      window.top.postMessage("$#@maximize-wfx-test-buddy:", "*");
+    })
+  }
+
+  crossIconClickHandler = () => {
+    this.setState({
+      isMinimized: true
+    }, ()=> {
+      window.top.postMessage("$#@minimize-wfx-test-buddy:", "*");
     })
   }
 
@@ -32,7 +42,9 @@ class App extends Component{
               <IconHome />
             </div>
             : 
-            <TestBuddy />
+            <TestBuddy 
+              minimizeClickHandler={this.crossIconClickHandler}
+            />
         }
       </div>
     );

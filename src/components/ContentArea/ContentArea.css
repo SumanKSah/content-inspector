@@ -1,11 +1,12 @@
-.content1 {
+.debug-manually-container {
   padding: 12px 24px;
+  font-family: Inter;
 }
 
 .debug-manually {
   position: relative;
-  height: 72px;
-  width: 334px;
+  height: 56px;
+  width: 322px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,7 +19,6 @@
 .debug-manually-text {
   width: 50%;
   flex-wrap: wrap;
-  font-family: Inter;
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;

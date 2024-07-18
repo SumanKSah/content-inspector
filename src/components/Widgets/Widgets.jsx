@@ -11,7 +11,7 @@ const Widgets = () => {
             {widget}
           </span>
           <span className='widget-eval-error'>
-            {`($(widget))`}
+            {` ($(widget))`}
           </span>
         </div>
         <div className='accordion-icon'>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter');
+
 .App {
   text-align: center;
   height: 100%;
@@ -12,4 +14,5 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #2B2B40;
+  font-family: Inter;
 }

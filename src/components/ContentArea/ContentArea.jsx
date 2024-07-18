@@ -1,21 +1,18 @@
-import React from 'react';
+import React, { useState, useSyncExternalStore } from 'react';
 import Header from '../Header/Header';
 import './ContentArea.css';
+import ContentHome from './ContentHome';
 
 const ContentArea = ({minimizeClickHandler}) => {
+  const [homeView, setHomeView] = useState(true);
   return (
     <div className='content-area'>
       <Header minimizeClickHandler={minimizeClickHandler}/>
-      <div className='content1'>
-        <div className='debug-manually'>
-          <div className='debug-manually-text'>
-            Content not displaying as expected?
-          </div>
-          <button className='debug-manually-button'>
-            Debug manuaaly
-          </button>
-        </div>
-      </div>
+      {
+        homeView 
+        ? <ContentHome />
+        : []
+      }
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import LeftNav from '../LeftNav/LeftNav';
 import ContentArea from '../ContentArea/ContentArea';
+import FixView from '../FixView/FixView';
 import './TestBuddy.css';
 import DebugView from '../Debug/DebugView';
 
@@ -20,12 +21,20 @@ const getView = (view, setView, minimizeClickHandler) => {
       return <ContentArea 
                 minimizeClickHandler={minimizeClickHandler}
                 setView={setView}
+                view={view}
               />;
     case "debugView":
       return <DebugView 
               minimizeClickHandler={minimizeClickHandler}
               setView={setView}
             />;
+    case "fixView":
+      return <FixView 
+              minimizeClickHandler={minimizeClickHandler}
+              setView={setView}
+            />;
+    default:
+      break;
   }
 }
 

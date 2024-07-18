@@ -15,7 +15,7 @@ const Widgets = () => {
           </span>
         </div>
         <div className='accordion-icon'>
-          {'^'}
+          {'<'}
         </div>
       </div>
     )

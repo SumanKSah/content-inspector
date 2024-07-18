@@ -18,3 +18,7 @@
   padding: 6px 24px;
   left: -12px;
 }
+
+.accordion-icon {
+  transform: rotate(90deg);
+}

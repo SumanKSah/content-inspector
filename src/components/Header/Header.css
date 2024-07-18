@@ -1,0 +1,22 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 36px;
+  width: 334px;
+  padding: 12px 24px;
+}
+
+.header-title {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: center;
+}
+
+.header-actions {
+  display: flex;
+  justify-self: flex-end;
+  gap: 24px;
+}

@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import './App.css';
+import TestBuddy from './components/TestBuddy/TestBuddy';
 import IconHome from './IconHome';
 
 class App extends Component{
@@ -30,7 +31,8 @@ class App extends Component{
             > 
               <IconHome />
             </div>
-            : []
+            : 
+            <TestBuddy />
         }
       </div>
     );

@@ -1,0 +1,10 @@
+.outer-container {
+  display: flex;
+  gap: 0;
+  position: relative;
+  height: calc(100vh - 4px);
+  width: 432px;
+  border-radius: 8px;
+  background-color: white;
+  border: 2px solid red;
+}

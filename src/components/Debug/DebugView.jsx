@@ -1,16 +1,11 @@
-const DebugHome = () => {
+import Header from "../Header/Header";
+const DebugView = ({setView, minimizeClickHandler}) => {
     return (
-        <div className='content1'>
-            <div className='debug-manually'>
-              <div className='debug-manually-text'>
-                Content not displaying as expected?
-              </div>
-              <button className='debug-manually-button'>
-                Debug manuaaly
-              </button>
-            </div>
-          </div>
+
+        <div className='debug-view'>
+           <Header name={"Manual Debugging"} minimizeClickHandler={minimizeClickHandler}/>
+        </div>
     )
 }
 
-export default DebugHome;
+export default DebugView;

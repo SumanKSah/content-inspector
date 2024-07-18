@@ -1,5 +1,5 @@
 import Widgets from "../Widgets/Widgets";
-const ContentHome = () => {
+const ContentHome = ({setView}) => {
   return (
     <div>
       <div className="debug-manually-container">
@@ -7,7 +7,12 @@ const ContentHome = () => {
           <div className="debug-manually-text">
             Content not displaying as expected?
           </div>
-          <button className="debug-manually-button">Debug manually</button>
+          <button 
+            className="debug-manually-button"
+            onClick={()=> {
+                setView("debugView");
+            }}
+            >Debug manually</button>
         </div>
       </div>
       <Widgets />

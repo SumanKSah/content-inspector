@@ -3,14 +3,14 @@ import Header from '../Header/Header';
 import './ContentArea.css';
 import ContentHome from './ContentHome';
 
-const ContentArea = ({minimizeClickHandler}) => {
+const ContentArea = ({setView, minimizeClickHandler}) => {
   const [homeView, setHomeView] = useState(true);
   return (
     <div className='content-area'>
-      <Header minimizeClickHandler={minimizeClickHandler}/>
+      <Header name={"Debugging Tool"} minimizeClickHandler={minimizeClickHandler}/>
       {
         homeView 
-        ? <ContentHome />
+        ? <ContentHome setView={setView}/>
         : []
       }
     </div>

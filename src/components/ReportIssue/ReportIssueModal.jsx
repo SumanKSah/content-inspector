@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ReportIssue.css';
 
 const ReportIssueModal = ({minimizeClickHandler}) => {
+
+  const [showButton, setShowButton] = useState(true);
+  const [showGif, setShowGif] = useState(false);
+
   const options = [
     'Content did not appear',
     'Styling issue detected',
@@ -17,6 +21,16 @@ const ReportIssueModal = ({minimizeClickHandler}) => {
   //   {name: 'Scrolling issue Detected', value: 'Scrolling issue Detected'},
   //   {name: 'None of the above', value: 'None of the above'}
   // ];
+
+  const submitReport = () => {
+    window.top.postMessage("$#@download_usage_reports:", "*");
+    let submitButtom = document.getElementById("submitButton");
+    submitButtom.innerText = "Sending Mail ...";
+    setTimeout(()=> {
+      setShowGif(true);
+      setShowButton(false);
+    }, 2000);
+  }
 
   return (
     <>
@@ -62,9 +76,22 @@ const ReportIssueModal = ({minimizeClickHandler}) => {
         <label>Allow whatfix to access logs of past 30 mins</label>
       </div>
 
-      <button className='report-issue-submit'>
+      {
+      showButton &&
+      <button className='report-issue-submit'
+        id='submitButton'
+        onClick={submitReport}
+      >
         Submit
-      </button>
+      </button> }
+
+      {
+      showGif &&
+      <div className="tickImage">
+        <img style={{borderRadius:10}} height={50} width={50} src="https://c.tenor.com/6ZkJEn80W7kAAAAC/tenor.gif" alt="submitGif" />
+      </div>
+      
+      }
     </div>
     </>
   );

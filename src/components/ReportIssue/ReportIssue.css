@@ -1,0 +1,117 @@
+.report-issue-container {
+  position: absolute;
+  background-color: white;
+  border: 1px solid green;
+  border-radius: 12px;
+  width: 322px;
+  height: 60%;
+  left: 54px;
+  top: 160px;
+  z-index: 10;
+  padding: 24px;
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+}
+
+.report-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 36px;
+  width: 286px;
+  padding: 12px;
+}
+
+.report-modal-title {
+  font-family: Inter;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 38px;
+  text-align: left;
+  color: #1F1F32;
+}
+
+.report-modal-close {
+  position: relative;
+  top: -15px;
+}
+
+.report-issue-description {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+  color: #6B697B;
+  padding: 6px 12px;
+}
+
+.report-type {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 6px;
+}
+
+.report-type > label {
+  display: flex;
+  align-self: flex-start;
+}
+
+.report-type > label > span {
+  color: #B3141D;
+  margin-left: 2px;
+}
+
+.report-type > select {
+  height: 44px;
+  padding: 4px 8px;
+  border: 1px solid #DFDDE7;
+  background: #FFFFFF;
+  border-radius: 6px;
+}
+
+.report-issue-desc {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 6px;
+}
+
+.report-issue-desc > label {
+  display: flex;
+  align-self: flex-start;
+}
+
+.report-issue-desc > textarea {
+  padding: 8px;
+  font-family: Inter;
+}
+
+.access-logs {
+  padding: 8px;
+  font-family: Inter;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.report-issue-submit {
+  width: 302px;
+  height: 44px;
+  padding: 12px 16px 12px 16px;
+  gap: 8px;
+  border-radius: 4px;
+  border: none;
+  background: #0D59AB;
+  color: white;
+  text-align: center;
+}
+
+.mask {
+  position: absolute;
+  top: -60px;
+  width: 100%;
+  height: calc(100% + 60px);
+  z-index: 9;
+  background-color: #1F1F32;
+  opacity: 0.4;
+}

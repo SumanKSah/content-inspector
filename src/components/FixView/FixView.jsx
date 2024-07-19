@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../Header/Header';
+import ReportIssueModal from '../ReportIssue/ReportIssueModal';
 import './FixView.css';
 
 const FixView = ({setView, minimizeClickHandler}) => {
@@ -7,6 +8,7 @@ const FixView = ({setView, minimizeClickHandler}) => {
     <div className='fix-view-container'>
       <button>{`<-`}</button>
       <Header name={"Fix Suggestions"} minimizeClickHandler={minimizeClickHandler}/>
+      <ReportIssueModal />
     </div>
   );
 }

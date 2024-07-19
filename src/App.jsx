@@ -22,7 +22,7 @@ class App extends Component{
         });
       }
       if(data?.data?.message === "testBuddyMessageResult") {
-        window.wfxTestBuddyData = data?.data?.obj;
+        window.wfxTestBuddyResponse = data?.data?.obj;
         const curr = this.state.objectUpdated;
         this.setState({
           objectUpdated: curr+1
@@ -63,6 +63,7 @@ class App extends Component{
             </div>
             : 
             <TestBuddy 
+              test={this.state.objectUpdated}
               minimizeClickHandler={this.crossIconClickHandler}
             />
         }

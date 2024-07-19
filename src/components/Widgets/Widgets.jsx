@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import './Widgets.css';
 
-const list = ['Smart tips Collection', 'Beacon Collection', 'Launcher Collection', 'Flow'];
+let list = Object.keys(window.wfxTestBuddyData || {});
+let data = window.wfxTestBuddyData;;
 
 const Success = () => {
-  return <span className='success'>Success</span>;
+  return <span className='success'>Success</span>;;
 }
 const Failure = () => {
-  return <span className='failure'>Failed</span>;
+  return <span className='failure'>Failed</span>;;
 }
 
 const Segment = ({segment, setView}) => {
-  const getWidgetList = () => {
-    
-  }
   return (
     <div className='segment-outer'>
       <div className='segment-container'>
@@ -32,7 +30,7 @@ const Segment = ({segment, setView}) => {
       {
         segment.status !== 'success' &&
         <div className='failed-segment'>
-          <div className='failed-message'>Element selection is incorrect</div>
+          <div className='failed-message'>Visibility rules are failing</div>
           <button className='failed-action' onClick={() => setView('fixView')}>Fix now</button>
         </div>
       }
@@ -41,8 +39,15 @@ const Segment = ({segment, setView}) => {
 }
 
 const getStatsElem = (widget, setView) => {
-  const index = list.findIndex((item) => item === widget);
-  const stats = Array(3).fill({name: 'Collection Name', numSteps: index+1, status: ''});
+  const segData = data[widget];
+  // const stats = Array(3).fill({name: 'Collection Name', numSteps: segData.flowData, status: ''});
+  const stats = segData.map((datam, index) => {
+    return {
+      name: datam.name,
+      numSteps: index+1,
+      status: datam.status ? "success" : "failure"
+    }
+  })
   console.log("Stats: ", stats);
   return (<div className='stats-container'>
     {stats.map((segment) => {
@@ -54,6 +59,17 @@ const getStatsElem = (widget, setView) => {
 const Collection = ({ widget , setView}) => {
   const [isActive, setIsActive] = useState(false);
 
+  list = Object.keys(window.wfxTestBuddyData || {});
+  data = window.wfxTestBuddyData;
+
+  const getFailurecount = (title) => {
+    const segs = data[title];
+    const count = segs.filter((seg) => {
+      return !seg.status
+    }).length
+    return count;
+  }
+
   return (
     <div>
       <div className='widget-container' onClick={() => setIsActive(!isActive)}>
@@ -61,8 +77,8 @@ const Collection = ({ widget , setView}) => {
           <span className='widget-title'>
             {widget}
           </span>
-          <span className='widget-eval-error'>
-            {` ($(widget))`}
+          <span className={`${getFailurecount(widget) > 0 ? "widget-eval-error" : "widget-eval-success"}`}>
+            { ` (${getFailurecount(widget)} errors)` }
           </span>
         </div>
         <div className='accordion-icon'>
@@ -75,6 +91,8 @@ const Collection = ({ widget , setView}) => {
 };
 
 const Widgets = ({setView}) => {
+  list = Object.keys(window.wfxTestBuddyData || {});
+  data = window.wfxTestBuddyData;
 
   return (
     <div className='widgets-container'>

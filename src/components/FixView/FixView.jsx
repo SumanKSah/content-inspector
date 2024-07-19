@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../Header/Header';
 import ReportIssueModal from '../ReportIssue/ReportIssueModal';
 import './FixView.css';
 import IssueView from './IssueView';
 
 const FixView = ({setView, minimizeClickHandler}) => {
+
+  window.addEventListener("message", (data) => {
+    if(data?.data?.message === "testBuddyMessageResult" && !window.isAiResponse) {
+      window.wfxTestBuddyResponse = data?.data?.obj;
+      const suggestion = data?.data?.obj?.message;
+      const hasIssue = data?.data?.obj?.hasIssue;
+
+      if(hasIssue) {
+        const elems = document.querySelectorAll("#suggestion-option");
+        elems.forEach((elem)=>elem.innerHTML="")
+        elems[0].innerHTML = `<b>${suggestion}</b>`;
+      }
+    }
+  });
+
+  const segmentId = window.segmentId;
+  const flowId = window.flowId;
+  const suspect = window.suspect;
+  const type = window.type;
+  const step = window.step;
+
+  useEffect(() => {
+    window.top.postMessage({message: "testBuddyRequestResponse", obj: {
+      segmentId: segmentId,
+      flowId: flowId,
+      suspect: suspect,
+      type: type,
+      step: step
+    }}, "*");
+  }, []);
+
   const issue = [
     {
       name: "Content did not appear",
@@ -49,7 +80,7 @@ const FixView = ({setView, minimizeClickHandler}) => {
         <div className='issue-heading'>
           {window.viewData.widget + " "}
           <b>
-          {window.viewData.collectionName}
+          {window.viewData.collectionName.name}
           </b>
         </div>
 

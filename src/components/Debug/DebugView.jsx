@@ -1,6 +1,30 @@
+import { useState } from "react";
 import Header from "../Header/Header";
 import "./DebugView.css"
+
 const DebugView = ({setView, minimizeClickHandler}) => {
+    const list = Object.keys(window.wfxTestBuddyData || {});
+    const data = window.wfxTestBuddyData;
+    const collections = window.wfxTestBuddyData[list[0]].map((obj) => {
+      return {
+        name: obj.name,
+        id: obj.segmentId,
+        flowId: obj.flow_id
+      }
+    })
+    const [currentSegment, setCurrentSegment] = useState(collections);
+
+    const updateSegmentSelected = (e) => {
+      const value = e.target.value;
+      const collections = window.wfxTestBuddyData[value].map((obj) => {
+        return {
+          name: obj.name,
+          id: obj.segmentId,
+          flowId: obj.flow_id
+        }
+      })
+      setCurrentSegment(collections);
+    }
 
     const getArrow = () => {
       return (<svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -8,9 +32,21 @@ const DebugView = ({setView, minimizeClickHandler}) => {
       </svg>);
     }
 
+    const getMapping = (suspect) => {
+      const suspectMap = {
+        0: "evaluation",
+        1: "css-override",
+        2: "overlap",
+        3: "scroll",
+        4: ""
+      }
+      return suspectMap[suspect];
+    }
+
     const debugOnlick = () => {
       let widgetName = document.getElementById("widgetName");
       let collectionName = document.getElementById("collectionName");
+      let collectionStep = document.getElementById("collectionStep").value;;
       let radioName;
       let radios = document.getElementsByName('debugSolution');
       for (var i = 0; i < radios.length; i++) {
@@ -22,11 +58,28 @@ const DebugView = ({setView, minimizeClickHandler}) => {
 
       window.viewData = {
         "widget" : widgetName.value,
-        "collectionName": collectionName.value,
-        "issueNumber": radioName
+        "collectionName": JSON.parse(collectionName.value),
+        "issueNumber": radioName,
+        "stepNumber": collectionStep
       }
 
-      window.setView("fixView");
+      window.segmentId = JSON.parse(collectionName.value).id;
+      window.flowId = JSON.parse(collectionName.value).flowId;
+      window.suspect = getMapping(radioName);
+      window.type = widgetName.value;
+      window.step = collectionStep;
+      if(window.suspect === "css-override") {
+        const idx = window.wfxTestBuddyData[widgetName.value].findIndex((obj) => obj.segmentId === window.segmentId);
+        if(idx != -1) {
+          const i = window.wfxTestBuddyData[widgetName.value][idx].flowData.stepData.findIndex((obj) => obj.stepNumber === collectionStep.toString());
+          if(i!=-1) {
+            const stepKey = window.wfxTestBuddyData[widgetName.value][idx].flowData.stepData[i].key;
+            window.flowId = window.flowId + ":" + stepKey;
+          }
+        }
+      }
+
+      window.setView("fixView");;
     }
 
     return (
@@ -37,23 +90,29 @@ const DebugView = ({setView, minimizeClickHandler}) => {
 
               <div className="widgetType debug-option">
                 <div className="widgetName select-label">Widget Type</div>
-                <select name="widgets" className="select-widget" id="widgetName">
-                  <option value="smart-tip">Smart tip</option>
-                  <option value="beacon">Beacon</option>
-                  <option value="flow">Flow</option>
-                  <option value="launcher">Launcher</option>
-                  <option value="popup">Popup</option>
-                  <option value="survey">Survey</option>
+                <select name="widgets" className="select-widget" id="widgetName" onChange={updateSegmentSelected}>
+                  {
+                    list.map((option) => {
+                      return <option value={option}>{option}</option>
+                    })
+                  }
                 </select>
               </div>
 
               <div className="collection debug-option">
                 <div className="select-collection select-label">Select Collection</div>
                 <select name="widgets" className="select-widget" id="collectionName">
-                  <option value="collection1">Collection 1</option>
-                  <option value="collection2">Collection 2</option>
-                  <option value="collection3">Collection 3</option>
+                  {
+                    currentSegment.map((obj) => {
+                      return <option value={JSON.stringify(obj)}>{obj.name}</option>
+                    })
+                  }
                 </select>
+              </div>
+
+              <div className="collection debug-option">
+                <div className="select-collection select-label">Step Number</div>
+                <input type="number" name="widgets" className="select-widget" id="collectionStep" />
               </div>
 
               <div className="debugSolution debug-option">

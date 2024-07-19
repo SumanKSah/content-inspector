@@ -18,9 +18,28 @@
   padding: 6px 24px;
   left: -12px;
 }
+.segment-title{
+  font-family: Inter;
+font-size: 14px;
+font-weight: 500;
+line-height: 20px;
+text-align: justified;
+color: #6B697B;
+}
+
+.widget-title {
+  text-transform: capitalize;
+}
 
 .accordion-icon {
   transform: rotate(90deg);
+}
+
+.widget-eval-error{
+  color: #B3141D;
+}
+.widget-eval-success{
+  color: #106A40;
 }
 
 .stats-container {
@@ -77,7 +96,7 @@
   height: 20px;
   padding: 2px 8px 2px 8px;
   gap: 4px;
-  border-radius: 50%;
+  border-radius: 50px;
   background: #F1FEF9;
   color: #106A40;
   font-family: Inter;
@@ -92,7 +111,7 @@
   height: 20px;
   padding: 2px 8px 2px 8px;
   gap: 4px;
-  border-radius: 50%;
+  border-radius: 50px;
   background: #FFF0F3;
   color: #B3141D;
   font-family: Inter;

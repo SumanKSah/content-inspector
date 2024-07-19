@@ -1,3 +1,7 @@
+.content-area {
+  overflow: auto;
+}
+
 .debug-manually-container {
   padding: 12px 24px;
   font-family: Inter;

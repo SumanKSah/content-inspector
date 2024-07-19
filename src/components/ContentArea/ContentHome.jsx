@@ -15,7 +15,7 @@ const ContentHome = ({setView}) => {
             >Debug manually</button>
         </div>
       </div>
-      <Widgets />
+      <Widgets setView={setView} />
     </div>
   );
 };

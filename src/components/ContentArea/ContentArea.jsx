@@ -1,4 +1,4 @@
-import React, { useState, useSyncExternalStore } from 'react';
+import React, { useState } from 'react';
 import Header from '../Header/Header';
 import './ContentArea.css';
 import ContentHome from './ContentHome';

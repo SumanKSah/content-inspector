@@ -22,3 +22,112 @@
 .accordion-icon {
   transform: rotate(90deg);
 }
+
+.stats-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 12px 18px;
+  /* background-color: rgba(0, 0, 0, .05); */
+  gap: 12px;
+}
+
+.segment-outer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0;
+  border: 1px solid #DFDDE7;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.segment-container {
+  background-color: white;
+  width: 286px;
+  height: 62px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  /* border: 1px solid #DFDDE7; */
+}
+
+.segment-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-count {
+  border-radius: 50%;
+  background-color: #F2F2F8;
+  height: 36px;
+  width: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success {
+  width: 65px;
+  height: 20px;
+  padding: 2px 8px 2px 8px;
+  gap: 4px;
+  border-radius: 50%;
+  background: #F1FEF9;
+  color: #106A40;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+}
+
+.failure {
+  width: 65px;
+  height: 20px;
+  padding: 2px 8px 2px 8px;
+  gap: 4px;
+  border-radius: 50%;
+  background: #FFF0F3;
+  color: #B3141D;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+}
+
+.failed-segment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(179, 20, 29, .1);
+  height: 14px;
+  width: 306px;
+  padding: 11px 15px;
+}
+
+.failed-message {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: left;
+  color: #2B2B40;
+}
+
+.failed-action {
+  border: none;
+  background-color: transparent;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: left;
+  color: #0D59AB;
+}

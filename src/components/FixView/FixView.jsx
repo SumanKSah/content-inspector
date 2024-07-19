@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../Header/Header';
+import ReportIssueModal from '../ReportIssue/ReportIssueModal';
 import './FixView.css';
 import IssueView from './IssueView';
 
@@ -55,6 +56,7 @@ const FixView = ({setView, minimizeClickHandler}) => {
           />
         </div>
       </div>
+      <ReportIssueModal />
     </div>
   );
 }

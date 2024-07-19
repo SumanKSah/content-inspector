@@ -9,29 +9,24 @@ const FixView = ({setView, minimizeClickHandler}) => {
     {
       name: "Content did not appear",
       fix: [
-        "Visibility rule might not have configured correctly",
-        ""
+        "Visibility rule might not have configured correctly"
       ]
     },
     {
       name: "Styling issue detected",
       fix: [
-        "Verify whatfix widget style from dashboard",
-        ""
+        "Verify whatfix widget style from dashboard"
       ]
     },
     {
       name: "Content flickering issue",
       fix: [
-        "Check if application view is keep on changing",
+        "Check if application view is keep on changing"
       ]
     },
     {
       name: "Scrolling issue Detected",
-      fix: [
-        "",
-        ""
-      ]
+      fix: []
     },
     {
       name: "None of the above",
@@ -56,7 +51,6 @@ const FixView = ({setView, minimizeClickHandler}) => {
           />
         </div>
       </div>
-      <ReportIssueModal />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import './ReportIssue.css';
 
-const ReportIssueModal = ({name, minimizeClickHandler}) => {
+const ReportIssueModal = ({minimizeClickHandler}) => {
   const options = [
     'Content did not appear',
     'Styling issue detected',

@@ -1,5 +1,8 @@
+import { useState } from "react";
+import ReportIssueModal from "../ReportIssue/ReportIssueModal";
 
 const IssueView = ({fix, name}) => {
+    const [showReport, setShowReport] = useState(false);
     const searchIcon = () => {
         return 
     }
@@ -45,10 +48,20 @@ const IssueView = ({fix, name}) => {
                         {"Problem still unsolved?"}
                     </div>
                     <div className="reportbuttonparent">
-                        <button className="reportbutton">Report issue</button>
+                        <button 
+                            className="reportbutton"
+                            onClick={()=> {
+                                setShowReport(true);
+                            }}
+                        >Report issue</button>
                     </div>
                 </div>
             </div>
+            {
+                showReport &&
+                <ReportIssueModal minimizeClickHandler={setShowReport}/>
+            }
+            
         </div>
     );
 }

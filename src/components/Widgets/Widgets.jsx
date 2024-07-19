@@ -11,6 +11,9 @@ const Failure = () => {
 }
 
 const Segment = ({segment, setView}) => {
+  const getWidgetList = () => {
+    
+  }
   return (
     <div className='segment-outer'>
       <div className='segment-container'>

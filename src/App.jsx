@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, useEffect } from 'react';
 import './App.css';
 import TestBuddy from './components/TestBuddy/TestBuddy';
 import IconHome from './IconHome';
@@ -8,7 +8,27 @@ class App extends Component{
     super();
     this.state = {
       isMinimized: true,
+      objectUpdated: 0
     }
+  }
+
+  componentDidMount = () => {
+    window.addEventListener("message", (data) => {
+      if(data?.data?.message === "testBuddyObjectUpdate") {
+        window.wfxTestBuddyData = data?.data?.obj;
+        const curr = this.state.objectUpdated;
+        this.setState({
+          objectUpdated: curr+1
+        });
+      }
+      if(data?.data?.message === "testBuddyMessageResult") {
+        window.wfxTestBuddyData = data?.data?.obj;
+        const curr = this.state.objectUpdated;
+        this.setState({
+          objectUpdated: curr+1
+        });
+      }
+    })
   }
 
   iconClickHandler = () => {

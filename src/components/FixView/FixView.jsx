@@ -9,28 +9,37 @@ const FixView = ({setView, minimizeClickHandler}) => {
     {
       name: "Content did not appear",
       fix: [
-        "Visibility rule might not have configured correctly"
+        "Visibility rule might not have configured correctly",
+        "Element could not be found on the current screen",
+        "The CSS selector entered under display rules might not be correct"
       ]
     },
     {
       name: "Styling issue detected",
       fix: [
-        "Verify whatfix widget style from dashboard"
+        "Verify whatfix widget style from dashboard",
+        "Possibility of CSS being overridden by Host App"
       ]
     },
     {
       name: "Content flickering issue",
       fix: [
-        "Check if application view is keep on changing"
+        "Check if application view is keep on changing",
+        "The selected element might be overlapping with some other element"
       ]
     },
     {
       name: "Scrolling issue Detected",
-      fix: []
+      fix: [
+        "Content might be created in scroll view, use Dom-inline"
+      ]
     },
     {
       name: "None of the above",
-      fix: []
+      fix: [
+        "Check with our AI Assitant",
+        "Allow us to capture logs to debug it further"
+      ]
     }
   ]
   return (

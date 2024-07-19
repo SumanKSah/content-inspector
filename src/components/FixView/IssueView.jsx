@@ -24,11 +24,13 @@ const IssueView = ({fix, name}) => {
                 <div className="fix-options">
                     {fix.map((item, index) => (
                         <div className="options">
-                            <b>{"Option " + (index + 1) + ": "}</b>
+                            <b width="40px">{"Option " + (index + 1) + ": "}</b>
                             {item}
                         </div>
                     ))}
                 </div>
+
+                <button className="autoHeal">Try our Quick Heal Option</button>
 
                 <div className="seperator"></div>
                 <div className="askai">

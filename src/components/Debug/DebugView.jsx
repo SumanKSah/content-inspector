@@ -7,15 +7,37 @@ const DebugView = ({setView, minimizeClickHandler}) => {
       <path d="M7 12L17 12L13 16M13 8L15 10M4 7V4H20V20H4V11" stroke="#001A72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>);
     }
+
+    const debugOnlick = () => {
+      let widgetName = document.getElementById("widgetName");
+      let collectionName = document.getElementById("collectionName");
+      let radioName;
+      let radios = document.getElementsByName('debugSolution');
+      for (var i = 0; i < radios.length; i++) {
+          if (radios[i].checked) {
+              radioName = i;
+              break;
+          }
+      }
+
+      window.viewData = {
+        "widget" : widgetName.value,
+        "collectionName": collectionName.value,
+        "issueNumber": radioName
+      }
+
+      window.setView("fixView");
+    }
+
     return (
 
         <div className='debug-view'>
            <Header name={"Manual Debugging"} minimizeClickHandler={minimizeClickHandler}/>
-           <div className="debugView-body">
+           <div className="view-body">
 
               <div className="widgetType debug-option">
                 <div className="widgetName select-label">Widget Type</div>
-                <select name="widgets" id="select-widget">
+                <select name="widgets" className="select-widget" id="widgetName">
                   <option value="smart-tip">Smart tip</option>
                   <option value="beacon">Beacon</option>
                   <option value="flow">Flow</option>
@@ -27,7 +49,7 @@ const DebugView = ({setView, minimizeClickHandler}) => {
 
               <div className="collection debug-option">
                 <div className="select-collection select-label">Select Collection</div>
-                <select name="widgets" id="select-widget">
+                <select name="widgets" className="select-widget" id="collectionName">
                   <option value="collection1">Collection 1</option>
                   <option value="collection2">Collection 2</option>
                   <option value="collection3">Collection 3</option>
@@ -68,7 +90,10 @@ const DebugView = ({setView, minimizeClickHandler}) => {
               </div>
             </div>
            <div className="footer">
-              <button className="next-button">Next</button>
+              <button 
+                className="next-button"
+                onClick={debugOnlick}
+              >Next</button>
            </div>
         </div>
     );

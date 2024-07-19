@@ -7,6 +7,10 @@ import DebugView from '../Debug/DebugView';
 
 const TestBuddy = ({minimizeClickHandler}) => {
   const [view, setView] = useState("contentView");
+
+  // This is to set the debug view
+  window.setView = setView;
+  
   return (
     <div className='outer-container'>
       <LeftNav />
